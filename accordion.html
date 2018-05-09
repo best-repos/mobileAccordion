@@ -5,32 +5,27 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<link rel="stylesheet" type="text/css" href="swiper-3.3.1.min.css">
 	<style type="text/css">
 		* {
+			margin: 0;
+			padding: 0;
 			box-sizing: border-box;
 			font-family: pingfang, "微软雅黑", sans-serif;
 		}
 
 		html,
 		body {
+			width: 100%;
 			overflow: hidden;
 			height: 1000px;
 		}
-
-		.swiper-container {
-			width: 100%;
-			height: 150px;
-			position: fixed;
-		}
-
 		.sliderArea {
 			margin: 0 auto;
-			width: 80%;
-			height: 700px;
+			width: 100%;
+			height: 100%;
 			position: fixed;
-			top: 150px;
-			left: 10%;
+			/*top: 150px;
+			left: 10%;*/
 		}
 
 		.upSlider {
@@ -48,7 +43,8 @@
 			float: left;
 			overflow: hidden;
 			position: absolute;
-			width: 600px;
+			width: 100%;
+			height: 80%;
 			transition: transform 1s;
 		}
 		.inner.up {
@@ -60,31 +56,12 @@
 			width: 100%;
 			height: 300px;
 		}
-
-		p {
-			position: relative;
-			top: -55px;
-		}
 	</style>
 </head>
 
 <body>
-	<div class="swiper-container">
-	    <div class="swiper-wrapper">
-	        <div class="swiper-slide">Slide 1</div>
-	        <div class="swiper-slide">Slide 2</div>
-	        <div class="swiper-slide">Slide 3</div>
-	    </div>
-	    <!-- 如果需要分页器 
-	    <div class="swiper-pagination"></div>-->
-	    
-	    <!-- 如果需要导航按钮 -->
-	    <div class="swiper-button-prev"></div>
-	    <div class="swiper-button-next"></div>
-	</div>
 	<section class="sliderArea">
-		<div class="upSlider" id="upSlider">
-		</div>
+		<div class="upSlider" id="upSlider"></div>
 	</section>
 	<script type="text/javascript">
 		;
@@ -104,7 +81,7 @@
 			var $container = document.getElementById('upSlider');
 			var imgConfig = {
 				container: $container,
-				offset: 40
+				offset: 50
 			}
 
 			function buildImg (data, config) {
@@ -112,7 +89,7 @@
 				var index = 0;
 				var len = data.length;
 				for (; index < len; index++) {
-					str += '<div class="inner" style="transform:translate3d(0, ' + (index * config.offset) + 'px, 0);z-index: ' + (len - index) + '"><img src="' + data[index] + '"></div>'
+					str += '<div class="inner" style="transform:translate3d(0, ' + (index * config.offset) + 'px, 0);z-index: ' + (len - index) + ';background:#'+index+index+index+'"></div>'
 				}
 
 				config.container.innerHTML = str;
